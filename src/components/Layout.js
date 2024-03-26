@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { colors } from '../styled';
 
 export const View = styled.View``;
 export const Flex = styled.View`
@@ -37,3 +38,8 @@ export const VStackEnd = styled(VStack)`
 export const VStackStart = styled(VStack)`
   align-items: flex-start;
 `;
+export const Container = styled(View)`
+  flex:1;
+  background-color:${colors.white};
+  padding:15px;
+`

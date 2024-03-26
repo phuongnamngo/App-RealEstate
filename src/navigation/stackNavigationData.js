@@ -1,16 +1,28 @@
 import React from "react";
 import ProfileScreen from "../screens/Profile/Profile.view";
+import PostDetailScreen from "../screens/PostDetail/PostDetail.view";
+import ChangePasswordScreen from "../screens/ChangePassword/ChangePassword.view";
+import ChangeProflieScreen from "../screens/Profile/ChangeProfile/ChangeProflie.view";
 
 const StackNavigationData = [
     {
-        name: "Accounts",
+        name: "Profile",
         component: ProfileScreen,
-        headerLeft: null,
-        tabBarVisible: false,
-        // headerBackground: { source: imageTopBarBG },
-        headerTitleStyle: {
-            fontSize: 18,
-        },
+        headerShown: false
+    },
+    {
+        name: "PostDetail",
+        component: PostDetailScreen,
+        headerShown: false
+    },
+    {
+        name: "ChangePassword",
+        component: ChangePasswordScreen,
+        headerShown: false
+    },
+    {
+        name: "ChangeProfle",
+        component: ChangeProflieScreen,
         headerShown: false
     },
 ];

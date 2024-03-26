@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import { useDispatch } from "react-redux";
-import { HomeContainer, HomeHeaderIcon, HomeReferal, IconAbsolute, ImageBanner, ImageBody } from "./Home.style";
+import { HomeContainer, HomeHeaderIcon, HomePoint, HomeReferal, IconAbsolute, ImageBanner, ImageBody } from "./Home.style";
 import useHome from "./Home.hook";
-import { Flex, Gap, HStackBetween, HStackStart, VStack, VStackStart } from "../../components/Layout";
+import { Flex, Gap, HStackBetween, HStackEnd, HStackStart, VStack, VStackStart, View } from "../../components/Layout";
 import { Image, ScrollView, TouchableOpacity } from "react-native";
 import icAccount from '../../../assets/icons/ic-account.png';
 import icNoti from '../../../assets/icons/ic-noti.png';
@@ -12,12 +12,13 @@ import icPost from '../../../assets/icons/ic-post.png';
 import icReferal from '../../../assets/icons/ic-referal.png';
 import imgBanner from '../../../assets/images/banner-bds.png';
 import imgRealEstate from '../../../assets/images/img-bds.jpg';
-import { Text, Text15Medium, Text18Bold, TextMedium } from "../../components/Text";
+import { Text, Text14Medium, Text15Medium, Text18Bold, TextMedium } from "../../components/Text";
 import AutoScroll from "@homielab/react-native-auto-scroll";
 import { colors } from "../../styled";
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const { } = useHome();
+    const number = 1234567;
     const HeaderNotification = memo(() => {
         return (
             <TouchableOpacity>
@@ -49,7 +50,20 @@ const HomeScreen = ({ navigation }) => {
                             <HeaderNotification />
                         </HStackStart>
                     </HStackBetween>
-                    <Gap $height={50} />
+                    <Gap $height={20} />
+                    <HomePoint>
+                        <HStackBetween>
+                            <View></View>
+                            <Text14Medium $color={colors.gray2}>Điểm:</Text14Medium>
+                            <Text14Medium $color={colors.dark}>{number.toLocaleString()}</Text14Medium>
+                        </HStackBetween>
+                        <HStackBetween>
+                            <View></View>
+                            <Text14Medium $color={colors.gray2}>Ngọc:</Text14Medium>
+                            <Text14Medium $color={colors.dark}>{number.toLocaleString()}</Text14Medium>
+                        </HStackBetween>
+                    </HomePoint>
+                    <Gap $height={30} />
                     <ImageBanner source={imgBanner} />
                     <Gap $height={30} />
                     <AutoScroll endPadding={50}>

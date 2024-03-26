@@ -27,4 +27,4 @@ export const ImageBody = styled(Image)`
     width: 100%;
     border-radius: 10px
 `;
-
+export const HomePoint = styled.View``;

@@ -4,6 +4,7 @@ export default {
     gray: "#666F8A",
     gray1: "#EAEEF5",
     gray2: "#7A839C",
+    gray3: "#2E2E2E",
     dark: "#000000",
     blueBland: "#D8EBFF",
     redBland: "#FCEBEA",
