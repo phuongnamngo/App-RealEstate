@@ -64,7 +64,7 @@ export default function MyTabBar({ state, descriptors, navigation }) {
                 target: route.key,
             });
             if (!isFocused && !event.defaultPrevented) {
-                if (!isLoggedIn) {
+                if (route.name === 'Account' && !isLoggedIn) {
                     navigation.navigate('Auth', { screen: 'Login' });
                 } else {
                     navigation.jumpTo(route.name);

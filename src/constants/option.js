@@ -1,0 +1,1 @@
+export const TOKEN_LATEST_USERNAME = '@loggedInApp:lastUsername';

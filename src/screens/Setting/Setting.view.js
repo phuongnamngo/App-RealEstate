@@ -12,8 +12,10 @@ import iconLogout from "../../../assets/icons/ic-logout.png";
 import iconAccount from "../../../assets/images/ic-account.png";
 import { SettingItem, TextTotal } from "./Setting.style";
 import { useNavigation } from "@react-navigation/native";
+import useSetting from "./Setting.hook";
 const SettingScreen = (props) => {
     const dispatch = useDispatch();
+    const { Logout } = useSetting();
     const navigation = useNavigation()
     const data = [{
         id: 1,
@@ -62,7 +64,7 @@ const SettingScreen = (props) => {
                     </SettingItem>
                 )
             })}
-            <SettingItem onPress={() => navigation.navigate("Auth", { screen: 'Login' })}>
+            <SettingItem onPress={() => Logout()}>
                 <HStackStart>
                     <Image source={iconLogout} />
                     <Gap $width={10} />

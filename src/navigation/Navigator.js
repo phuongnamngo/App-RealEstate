@@ -6,7 +6,7 @@ import axios from 'axios';
 import RootView from './RootNavigation';
 import { useNavigation, StackActions } from '@react-navigation/native';
 import AuthView from './AuthNavigation';
-import { logout } from '../actions/auth';
+import { logout } from '../actions/Auth/auth';
 
 const RootStack = createStackNavigator();
 

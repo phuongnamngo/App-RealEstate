@@ -27,9 +27,9 @@ const PostScreen = (props) => {
         image: require('../../../assets/images/anh3.png'),
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec diam justo. Nullam sed volutpat nunc.'
     },]
-    const renderItem = (item) => {
+    const renderItem = (item, index) => {
         return (
-            <ItemContainer>
+            <ItemContainer style={{ borderBottomWidth: index === data.length - 1 ? 0 : 4 }}>
                 <ImagePost source={item.image} />
                 <Gap $height={10} />
                 <TouchableOpacity onPress={() => navigation.navigate("Root", { screen: "PostDetail", params: { item } })}>
@@ -48,7 +48,7 @@ const PostScreen = (props) => {
             <Gap $height={20} />
             <FlatList
                 data={data}
-                renderItem={(item) => renderItem(item.item)}
+                renderItem={({ item, index }) => renderItem(item, index)}
                 keyExtractor={item => item.id}
                 showsVerticalScrollIndicator={false}
             />

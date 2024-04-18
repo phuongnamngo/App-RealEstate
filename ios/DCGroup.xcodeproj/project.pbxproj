@@ -26,6 +26,7 @@
 		550F20C14FA54812AD485CCF /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41B870F2542244819B036139 /* Roboto-Regular.ttf */; };
 		86B0127C699D441FB6BF4B7A /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD6A220D8D624611993AFDCD /* Roboto-Thin.ttf */; };
 		AB49D9E4D96D4DCFA947D261 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E68DB23433684853B04E217F /* Roboto-ThinItalic.ttf */; };
+		C5CA4C43C17149E0848184F3 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255B4D14BD15473DA030BAEA /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		41B870F2542244819B036139 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		FD6A220D8D624611993AFDCD /* Roboto-Thin.ttf */ = {isa = PBXFileReference; name = "Roboto-Thin.ttf"; path = "../assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E68DB23433684853B04E217F /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-ThinItalic.ttf"; path = "../assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		255B4D14BD15473DA030BAEA /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "DCGroup/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				255B4D14BD15473DA030BAEA /* BootSplash.storyboard */,
 			);
 			name = DCGroup;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				550F20C14FA54812AD485CCF /* Roboto-Regular.ttf in Resources */,
 				86B0127C699D441FB6BF4B7A /* Roboto-Thin.ttf in Resources */,
 				AB49D9E4D96D4DCFA947D261 /* Roboto-ThinItalic.ttf in Resources */,
+				C5CA4C43C17149E0848184F3 /* BootSplash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

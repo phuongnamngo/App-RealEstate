@@ -1,25 +1,32 @@
-import { LOGIN_SUCCESS, LOGOUT } from "../actions/type";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-const user = AsyncStorage.getItem("user");
-const initialState = user
-    ? { isLoggedIn: true, user }
-    : { isLoggedIn: false, user: null };
-export default auth = (state = initialState, action) => {
+import { LOGIN, LOGOUT, GET_PROFILE, UPDATE_PHONE_NUMBER } from "../actions/Auth/type";
+
+const initialState = { isLoggedIn: false, infoUser: {}, phoneNumber: '' };
+
+export default function (state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
-        case LOGIN_SUCCESS:
+        case LOGIN:
             return {
                 ...state,
                 isLoggedIn: true,
-                user: payload.user,
             };
         case LOGOUT:
             return {
                 ...state,
                 isLoggedIn: false,
-                user: null,
+                infoUser: {},
+            };
+        case GET_PROFILE:
+            return {
+                ...state,
+                infoUser: payload.infoUser,
+            };
+        case UPDATE_PHONE_NUMBER:
+            return {
+                ...state,
+                phoneNumber: payload.phoneNumber,
             };
         default:
             return state;
     }
-};
+}

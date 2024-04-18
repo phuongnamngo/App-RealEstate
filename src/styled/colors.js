@@ -5,11 +5,14 @@ export default {
     gray1: "#EAEEF5",
     gray2: "#7A839C",
     gray3: "#2E2E2E",
+    gray4: "#F8F8FA",
     dark: "#000000",
     blueBland: "#D8EBFF",
     redBland: "#FCEBEA",
     greenBland: "#E5F6D8",
     blue: "#094B8F",
     orange: "#E95035",
-    green: "#289234"
+    green: "#289234",
+    green1:"#DDF9F2",
+    red1:"#FFEEEE",
 };
