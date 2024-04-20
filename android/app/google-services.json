@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "553321736064",
+    "project_id": "dcgroup-4e19e",
+    "storage_bucket": "dcgroup-4e19e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553321736064:android:16698e4f5acb216f228365",
+        "android_client_info": {
+          "package_name": "com.dcgroup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1QsEiVr3G668bX1ZqGvXqAoxHt81XuAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

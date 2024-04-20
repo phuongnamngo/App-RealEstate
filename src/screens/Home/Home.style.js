@@ -56,8 +56,8 @@ export const SearchInput = styled(HStackStart)`
     flex:1;
 `;
 export const Discount = styled(TouchableOpacity)`
-    width: ${itemWidth};
-    height: ${itemWidth + 40};
+    width: ${itemWidth}px;
+    height: ${itemWidth + 40}px;
     margin-right: 10px;
 `;
 export const DiscountImage = styled(Image)`
@@ -71,8 +71,8 @@ export const NewsHot = styled(View)`
     flex-wrap: wrap;
 `;
 export const NewsHotView = styled(TouchableOpacity)`
-    width: ${itemWidth};
-    height: ${itemWidth + 50};
+    width: ${itemWidth}px;
+    height: ${itemWidth + 50}px;
     margin: 5px;
     border-radius: 10px;
     overflow: hidden;
