@@ -4,13 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import AppView from "./src/AppView";
 import { PersistGate } from "redux-persist/integration/react";
-import { persistor, store } from "./src/store";
 import messaging from '@react-native-firebase/messaging';
 import notifee, { EventType } from '@notifee/react-native';
 import onDisplayNotification from "./src/utils/Notifee";
 import CaseNotifee from "./src/utils/CaseNotifee";
 import SplashScreen from "react-native-splash-screen";
-
+import {store, persistor} from "./src/store";
 
 messaging().setBackgroundMessageHandler(onDisplayNotification);
 notifee.onBackgroundEvent(async ({ type, detail }) => {
@@ -69,6 +68,7 @@ const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
+
   return (
     <StoreProvider store={store}>
       <NavigationContainer>

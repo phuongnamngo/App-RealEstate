@@ -1,0 +1,15 @@
+import { buildSlice } from '@thecodingmachine/redux-toolkit-wrapper';
+import {sliceInitialState} from './initialState';
+import reset{{path}}State from './reset{{path}}State';
+//endAppendAction
+
+const listReducer = [
+  reset{{path}}State,
+  //endAppendToReducer
+];
+
+export default buildSlice(
+  '{{path}}',
+  listReducer,
+  sliceInitialState,
+).reducer;

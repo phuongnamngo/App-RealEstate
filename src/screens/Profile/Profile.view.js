@@ -13,9 +13,11 @@ import icPhone from '../../../assets/icons/ic-phone.png';
 import icMail from '../../../assets/icons/ic-mail.png';
 import { ButtonProfile, InputProfile } from "./Profile.style";
 import iconAccount from "../../../assets/images/ic-account.png";
+import useProfile from "./Profile.hook";
 
 const ProfileScreen = (props) => {
     const dispatch = useDispatch();
+    const { infoUser } = useProfile();
     const navigation = useNavigation();
     const data = {
         name: 'Đăng Chánh',

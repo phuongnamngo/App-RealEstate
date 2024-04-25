@@ -1,18 +1,53 @@
-import { api } from "..";
-import { toRaws } from "../utils/handleRaws";
+import { api } from '@/services';
+import { toFormData } from "../utils/handleFormData";
+import axios from 'axios';
 
 export const signInService = async payload => {
-    const response = await api.post('app/login', toRaws(payload));
-    return response.data;
+    try {
+        const response = await api.post('client/authentication', toFormData(payload));
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+};
+export const registerService = async payload => {
+    try {
+        const response = await api.post('client', toFormData(payload));
+        return response.data;
+    } catch (error) {
+        return error;
+    }
 };
 export const getProfileService = async (payload, options) => {
-    const response = await api.post('app/res.users/search', {}, options);
-    return response.data;
+    try {
+        const response = await api.get('client', {}, options);
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+};
+export const updatePasswordService = async (payload, options) => {
+    try {
+        const response = await api.post('client/password', toFormData(payload), options);
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+
+};
+export const logoutService = async (payload, options) => {
+    try {
+        const response = await api.post('client/logout', {}, options);
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+
 };
 export const refreshTokenService = async (payload, options) => {
     const response = await api.post(
         'app/refresh-token',
-        toRaws(payload),
+        toFormData(payload),
         options,
     );
     return response.data;

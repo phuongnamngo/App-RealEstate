@@ -11,7 +11,7 @@ import useLogin from "./Login.hook";
 import icGoBack from '../../../assets/icons/ic-goback.png';
 
 const LoginScreen = (props) => {
-    const { navigation, goPage, onSubmit } = useLogin();
+    const { navigation, goPage, onSubmit, changePhone, changePass } = useLogin();
     return (
         <LoginContainer>
             <ImagebackgroundLogin source={imgLogin} resizeMode="cover">
@@ -31,6 +31,7 @@ const LoginScreen = (props) => {
                         <Text15Medium $color={colors.white}>Số điện thoại</Text15Medium>
                         <Gap $height={10} />
                         <TextInput
+                            onChangeText={(e) => changePhone(e)}
                             placeholder="Nhập số điện thoại"
                             placeholderTextColor={colors.gray}
                             style={styles.textInput} />
@@ -38,6 +39,7 @@ const LoginScreen = (props) => {
                         <Text15Medium $color={colors.white}>Mật khẩu</Text15Medium>
                         <Gap $height={10} />
                         <TextInput
+                            onChangeText={(e) => changePass(e)}
                             placeholder="Nhập mật khẩu"
                             secureTextEntry={true}
                             placeholderTextColor={colors.gray}

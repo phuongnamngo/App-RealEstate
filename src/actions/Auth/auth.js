@@ -16,14 +16,15 @@ import { TOKEN_LATEST_USERNAME } from '../../constants/option';
 export const login = data => dispatch => {
   try {
     let {
-      access_token: accessToken,
-      refresh_token: refreshToken,
-      token_expired_in: timeEnd,
+      token: accessToken,
+      // refresh_token: refreshToken,
+      // token_expired_in: timeEnd,
     } = data;
     axios.defaults.withCredentials = true;
     dispatch({
       type: UPDATE_TOKEN,
-      payload: {accessToken, refreshToken, expire: timeEnd},
+     // payload: {accessToken, refreshToken, expire: timeEnd},
+     payload: {accessToken},
     });
     dispatch({
       type: LOGIN,

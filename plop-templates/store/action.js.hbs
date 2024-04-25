@@ -1,0 +1,22 @@
+import {
+  buildAsyncState,
+  buildAsyncReducers,
+  buildAsyncActions,
+} from '@thecodingmachine/redux-toolkit-wrapper';
+import {wrapApi} from '@/services/utils/handleService';
+
+export default {
+  initialState: buildAsyncState('{{name}}'),
+  action: buildAsyncActions(
+    '{{path}}/{{name}}',
+    async (args, { dispatch }) => {
+      //return await wrapApi(, args);
+      return {};
+    }
+  ),
+  reducers: buildAsyncReducers({
+    errorKey: '{{name}}.error', // Optionally, if you scoped variables, you can use a key with dot notation
+    loadingKey: '{{name}}.loading',
+    itemKey: 'item.{{name}}',
+  }),
+};

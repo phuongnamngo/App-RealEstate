@@ -1,0 +1,27 @@
+import {
+  buildAsyncState,
+  buildAsyncReducers,
+  buildAsyncActions,
+} from '@thecodingmachine/redux-toolkit-wrapper';
+import {sliceInitialState} from './initialState';
+
+export default {
+  initialState: buildAsyncState('reset{{path}}State'),
+  action: buildAsyncActions(
+    '{{path}}/reset{{path}}State',
+    async (args, {dispatch}) => {
+      return sliceInitialState.item;
+    },
+  ),
+  reducers: {
+    ...buildAsyncReducers({
+      errorKey: 'reset{{path}}State.error', // Optionally, if you scoped variables, you can use a key with dot notation
+      loadingKey: 'reset{{path}}State.loading',
+      itemKey: 'item.reset{{path}}State',
+    }),
+    fulfilled: (state, {payload, type}) => {
+      state.reset{{path}}State.loading = false;
+      state.item = payload;
+    },
+  },
+};

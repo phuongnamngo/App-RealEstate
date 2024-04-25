@@ -1,4 +1,5 @@
-import { store } from "../../store";
+import { store } from "@/store";
+
 export function getAccessToken() {
   const accessToken = store.getState().sensitive.token.accessToken;
   return accessToken;

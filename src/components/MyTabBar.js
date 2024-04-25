@@ -31,7 +31,7 @@ const icons = {
 
 export default function MyTabBar({ state, descriptors, navigation }) {
     const focusedOptions = descriptors[state.routes[state.index].key].options;
-    const { isLoggedIn } = useSelector(state => state.auth);
+    const { isLoggedIn } = useSelector(state => state.main.auth);
     if (focusedOptions.tabBarVisible === false) {
         return null;
     }

@@ -1,10 +1,10 @@
 import { getAccessToken, getRefreshToken } from './useToken';
-import { store } from '@/Store';
+import { updateToken } from '@/actions/Auth/auth';
+import { store } from '@/store';
+import { appLoading, appMaintenance } from '@/actions/System/system';
+import refreshToken from '@/store/reducers/api/Auth/refreshToken';
+import signOut from '@/store/reducers/api/Auth/signOut';
 import { debounce } from 'lodash';
-import { updateToken } from '../../actions/Auth/auth';
-import { appLoading, appMaintenance } from '../../actions/System/system';
-import signOut from '../../reducers/api/Auth/signOut';
-import refreshToken from '../../reducers/api/Auth/refreshToken';
 
 const promiseRefreshToken = {
   count: 0,
@@ -22,7 +22,7 @@ const refreshTokenPromise = async () => {
       payload: { refresh_token: _refreshToken },
       options: {
         headers: {
-          'access-token': `${_accessToken}`,
+          'Authorization': `Bearer ${_accessToken}`,
         },
       },
     }),
@@ -65,58 +65,39 @@ export const wrapApi = async (
     if (!options.headers) {
       options.headers = {};
     }
-    options.headers = { 'access-token': `${accessToken}` };
-  }
-  var hookCancelToken;
-  if (args?.hookCancelToken) {
-    hookCancelToken = args.hookCancelToken;
-    delete args.hookCancelToken;
-    options.cancelToken = hookCancelToken.newCancelToken();
+    options.headers = { 'Authorization': `Bearer ${accessToken}` };
   }
   const rs = await apiService(args, options).catch(error => {
     if (supportLoading) {
       store.dispatch(appLoading(false));
     }
-    if (
-      (hookCancelToken && hookCancelToken.isCancel(error)) ||
-      !error.message
-    ) {
-      return Promise.resolve(error);
-    }
-    if (error?.status === 503 && error?.data?.maintenance) {
-      store.dispatch(appMaintenance(true));
-    }
     return Promise.reject(error);
   });
+  // if (rs?.result?.code === 401) {
+  //   return getRefreshTokenPromise(x => {
+  //     if (x.error) {
+  //       //FIXME: should navigate to login when 401
+  //       if (x.payload?.status === 401) {
+  //         debounceSignOut();
+  //         return Promise.reject({ error: 'UnauthorizedError' });
+  //       }
+  //       return Promise.reject(x?.payload?.error || x.error);
+  //     } else {
+  //       store.dispatch(updateToken(x.payload.result));
 
-  if (rs?.result?.code === 401) {
-    return getRefreshTokenPromise(x => {
-      if (x.error) {
-        //FIXME: should navigate to login when 401
-        if (x.payload?.status === 401) {
-          debounceSignOut();
-          return Promise.reject({ error: 'UnauthorizedError' });
-        }
-        return Promise.reject(x?.payload?.error || x.error);
-      } else {
-        store.dispatch(updateToken(x.payload.result));
-
-        options.headers = { 'access-token': `${x.payload.result.access_token}` };
-        if (hookCancelToken) {
-          options.cancelToken = hookCancelToken.newCancelToken();
-        }
-        if (supportLoading) {
-          store.dispatch(appLoading(false));
-        }
-        return Promise.resolve(apiService(args, options));
-      }
-    }).catch(e => {
-      if (supportLoading) {
-        store.dispatch(appLoading(false));
-      }
-      return e;
-    });
-  }
+  //       options.headers = { 'Authorization': `Bearer ${x.payload.result.access_token}` };
+  //       if (supportLoading) {
+  //         store.dispatch(appLoading(false));
+  //       }
+  //       return Promise.resolve(apiService(args, options));
+  //     }
+  //   }).catch(e => {
+  //     if (supportLoading) {
+  //       store.dispatch(appLoading(false));
+  //     }
+  //     return e;
+  //   });
+  // }
   if (supportLoading) {
     store.dispatch(appLoading(false));
   }

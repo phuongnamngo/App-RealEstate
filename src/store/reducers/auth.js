@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, GET_PROFILE, UPDATE_PHONE_NUMBER } from "../actions/Auth/type";
+import { LOGIN, LOGOUT, GET_PROFILE, UPDATE_PHONE_NUMBER } from "@/actions/Auth/type";
 
 const initialState = { isLoggedIn: false, infoUser: {}, phoneNumber: '' };
 

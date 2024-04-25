@@ -10,7 +10,7 @@ import { colors } from "../../styled";
 import useRegister from "./Register.hook";
 
 const RegisterScreen = () => {
-    const { goLogin } = useRegister();
+    const { goLogin, onChange, onRegister } = useRegister();
     return (
         <LoginContainer>
             <ImagebackgroundLogin source={imgLogin} resizeMode="cover">
@@ -26,10 +26,19 @@ const RegisterScreen = () => {
                         </VStack>
                         <Gap $height={40} />
                         <VStackStart>
-                            <Text15Medium $color={colors.white}>Họ tên người dùng</Text15Medium>
+                            <Text15Medium $color={colors.white}>Họ người dùng</Text15Medium>
+                            <Gap $height={10} />
+                            <TextInput
+                                placeholder="Nhập họ người dùng"
+                                onChangeText={text => onChange('firstName', text)}
+                                placeholderTextColor={colors.gray}
+                                style={styles.textInput} />
+                            <Gap $height={15} />
+                            <Text15Medium $color={colors.white}>Tên người dùng</Text15Medium>
                             <Gap $height={10} />
                             <TextInput
                                 placeholder="Nhập tên người dùng"
+                                onChangeText={text => onChange('lastName', text)}
                                 placeholderTextColor={colors.gray}
                                 style={styles.textInput} />
                             <Gap $height={15} />
@@ -37,13 +46,16 @@ const RegisterScreen = () => {
                             <Gap $height={10} />
                             <TextInput
                                 placeholder="Nhập số điện thoại"
+                                onChangeText={text => onChange('phoneNumber', text)}
                                 placeholderTextColor={colors.gray}
-                                style={styles.textInput} />
+                                style={styles.textInput}
+                                keyboardType="numeric" />
                             <Gap $height={15} />
                             <Text15Medium $color={colors.white}>Mật khẩu</Text15Medium>
                             <Gap $height={10} />
                             <TextInput
                                 placeholder="Nhập mật khẩu"
+                                onChangeText={text => onChange("password", text)}
                                 secureTextEntry={true}
                                 placeholderTextColor={colors.gray}
                                 style={styles.textInput} />
@@ -52,11 +64,12 @@ const RegisterScreen = () => {
                             <Gap $height={10} />
                             <TextInput
                                 placeholder="Nhập lại mật khẩu"
+                                onChangeText={text => onChange("rePassword", text)}
                                 secureTextEntry={true}
                                 placeholderTextColor={colors.gray}
                                 style={styles.textInput} />
                         </VStackStart>
-                        <ButtonLogin>
+                        <ButtonLogin onPress={() => onRegister()}>
                             <Text14Medium $color={colors.white}>Đăng ký</Text14Medium>
                         </ButtonLogin>
                         <Gap $height={20} />

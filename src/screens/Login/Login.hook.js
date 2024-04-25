@@ -1,20 +1,34 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../../actions/Auth/auth";
+import { login } from "@/actions/Auth/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import messaging from '@react-native-firebase/messaging';
+import signIn from "@/store/reducers/api/Auth/signIn";
 
 const useLogin = () => {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const [tokenFirebase, setTokenFirebase] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
     const goPage = (text) => {
         navigation.navigate("Auth", { screen: text })
+    };
+    const changePhone = (e) => {
+        setPhoneNumber(e);
     }
-    const onSubmit = (item) => {
-        dispatch(login(item));
-        navigation.navigate("Main", { screen: "Home" })
+    const changePass = (e) => {
+        setPassword(e);
+    }
+    const onSubmit = async (item) => {
+        if (!phoneNumber || !password) {
+            showAlertError({ message: 'Thông tin không được để trống' });
+            return;
+        }
+        const payload = { phone: phoneNumber, password };
+        const rs = await dispatch(signIn.action(payload));
+        dispatch(login(rs.payload.data));
     }
     const GetFCMToken = async () => {
         const fcmToken = await AsyncStorage.getItem('fcmtoken');
@@ -23,7 +37,6 @@ const useLogin = () => {
                 const fcmToken = await messaging().getToken();
                 if (fcmToken) {
                     setTokenFirebase(fcmToken);
-                    console.log('meo: ', fcmToken);
                     await AsyncStorage.setItem('fcmToken', fcmToken);
                 }
             } catch (error) {
@@ -31,10 +44,9 @@ const useLogin = () => {
             }
         }
     };
-    console.log('meo: ', tokenFirebase);
     useEffect(() => {
         GetFCMToken();
     }, []);
-    return { navigation, goPage, onSubmit };
+    return { navigation, goPage, onSubmit, changePhone, changePass };
 }
 export default useLogin;

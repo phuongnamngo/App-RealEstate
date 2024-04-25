@@ -13,7 +13,7 @@ import Button from "../../components/Button";
 const ChangePasswordScreen = (props) => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
-    const { newPass, setNewPass, confirmPass, setConfirmPass } = useChangePassword();
+    const { newPass, setNewPass, confirmPass, setConfirmPass, oldPass, setOldPass } = useChangePassword();
     return (
         <Container>
             <HStackBetween>
@@ -25,6 +25,19 @@ const ChangePasswordScreen = (props) => {
             </HStackBetween>
             <Gap $height={40} />
             <VStackStart>
+                <ChangePasswordInput>
+                    <Image source={icKey} />
+                    <Gap $width={10} />
+                    <TextInput
+                        style={styles.input}
+                        value={oldPass}
+                        placeholder="Nhập mật khẩu cũ"
+                        placeholderTextColor={colors.gray2}
+                        secureTextEntry={true}
+                        onChangeText={(text) => setOldPass(text)}
+                    />
+                </ChangePasswordInput>
+                <Gap $height={20} />
                 <ChangePasswordInput>
                     <Image source={icKey} />
                     <Gap $width={10} />

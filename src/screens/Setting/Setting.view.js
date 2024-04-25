@@ -15,7 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import useSetting from "./Setting.hook";
 const SettingScreen = (props) => {
     const dispatch = useDispatch();
-    const { Logout } = useSetting();
+    const { logoutSubmit } = useSetting();
     const navigation = useNavigation()
     const data = [{
         id: 1,
@@ -64,7 +64,7 @@ const SettingScreen = (props) => {
                     </SettingItem>
                 )
             })}
-            <SettingItem onPress={() => Logout()}>
+            <SettingItem onPress={() => logoutSubmit()}>
                 <HStackStart>
                     <Image source={iconLogout} />
                     <Gap $width={10} />

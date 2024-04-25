@@ -17,7 +17,7 @@ const rootStacks = [
 ];
 
 export default function App() {
-    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    const isLoggedIn = useSelector(state => state.main.auth.isLoggedIn);
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const sourceCancelToken = axios.CancelToken.source();
