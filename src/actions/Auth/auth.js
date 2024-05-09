@@ -1,7 +1,7 @@
 
 import axios from 'axios';
-import {RESET_GOAL} from '../Goal/type';
-import {RESET_TARGET} from '../Target/type';
+import { RESET_GOAL } from '../Goal/type';
+import { RESET_TARGET } from '../Target/type';
 import {
   LOGIN,
   UPDATE_TOKEN,
@@ -15,6 +15,7 @@ import { TOKEN_LATEST_USERNAME } from '../../constants/option';
 
 export const login = data => dispatch => {
   try {
+
     let {
       token: accessToken,
       // refresh_token: refreshToken,
@@ -23,8 +24,8 @@ export const login = data => dispatch => {
     axios.defaults.withCredentials = true;
     dispatch({
       type: UPDATE_TOKEN,
-     // payload: {accessToken, refreshToken, expire: timeEnd},
-     payload: {accessToken},
+      // payload: {accessToken, refreshToken, expire: timeEnd},
+      payload: { accessToken },
     });
     dispatch({
       type: LOGIN,
@@ -57,7 +58,7 @@ export const updateToken = data => dispatch => {
   try {
     dispatch({
       type: UPDATE_TOKEN,
-      payload: {accessToken, refreshToken, expire: timeEnd},
+      payload: { accessToken, refreshToken, expire: timeEnd },
     });
   } catch (error) {
     throw error;
@@ -68,7 +69,7 @@ export const loadProfile = data => dispatch => {
   try {
     dispatch({
       type: GET_PROFILE,
-      payload: {infoUser: data},
+      payload: { infoUser: data },
     });
   } catch (error) {
     throw error;
@@ -78,19 +79,9 @@ export const loadProfile = data => dispatch => {
 export const updateProfile = data => (dispatch, getState) => {
   try {
     const infoUser = getState().main.auth.infoUser;
-    const mergeArrays = (arr1, arr2) => {
-      return arr1.map(obj1 => {
-        const matchingObj2 = arr2.find(obj2 => true);
-        if (matchingObj2) {
-          return {...obj1, ...matchingObj2};
-        }
-        return obj1;
-      });
-    };
-    const resultArray = mergeArrays(infoUser, data);
     dispatch({
       type: GET_PROFILE,
-      payload: {infoUser: resultArray},
+      payload: { infoUser: { ...infoUser, ...data } },
     });
   } catch (error) {
     throw error;
@@ -101,7 +92,7 @@ export const updateProfile = data => (dispatch, getState) => {
 export const saveLatestUsername = async data => {
   //  export const handleLatestEmail = async (data) => {
   try {
-    let {username} = data;
+    let { username } = data;
     await AsyncStorage.setItem(TOKEN_LATEST_USERNAME, username);
   } catch (error) {
     throw new Error(error);
@@ -123,7 +114,7 @@ export const updatePhoneNumber = data => dispatch => {
   try {
     dispatch({
       type: UPDATE_PHONE_NUMBER,
-      payload: {phoneNumber: data},
+      payload: { phoneNumber: data },
     });
   } catch (error) {
     throw error;

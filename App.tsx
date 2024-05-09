@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Provider as StoreProvider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import AppView from "./src/AppView";
 import { PersistGate } from "redux-persist/integration/react";
 import messaging from '@react-native-firebase/messaging';
 import notifee, { EventType } from '@notifee/react-native';
 import onDisplayNotification from "./src/utils/Notifee";
 import CaseNotifee from "./src/utils/CaseNotifee";
 import SplashScreen from "react-native-splash-screen";
-import {store, persistor} from "./src/store";
+import { store, persistor } from "./src/store";
+import { ApplicationNavigator } from '@/navigators';
 
 messaging().setBackgroundMessageHandler(onDisplayNotification);
 notifee.onBackgroundEvent(async ({ type, detail }) => {
@@ -17,6 +17,8 @@ notifee.onBackgroundEvent(async ({ type, detail }) => {
 });
 const App = () => {
   const [isReady, setIsReady] = useState(__DEV__ ? false : true);
+  const [initialRoute, setInitialRoute] = useState('Home');
+  const [initialNavigate, setInitialNavigate] = useState();
   const requestUserPermission = async () => {
     const authStatus = await messaging().requestPermission();
     const enabled =
@@ -71,18 +73,18 @@ const App = () => {
 
   return (
     <StoreProvider store={store}>
-      <NavigationContainer>
-        <PersistGate
-          loading={
-            <View style={styles.container}>
-              <ActivityIndicator size="large" color="#2b77ff" />
-            </View>
-          }
-          persistor={persistor}
-        >
-          <AppView />
-        </PersistGate>
-      </NavigationContainer>
+      <PersistGate
+        loading={null}
+        persistor={persistor}
+      >
+        {isReady ? (
+          <ApplicationNavigator
+            screen={initialRoute}
+            initialNavigate={initialNavigate}
+           // dataItem={product}
+          />
+        ) : null}
+      </PersistGate>
     </StoreProvider>
   );
 };

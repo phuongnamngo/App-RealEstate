@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { HStackBetween } from "../../components/Layout";
-import { colors } from "../../styled";
-import { TouchableOpacity } from "react-native";
+import { HStackBetween, VStackStart } from "@/components/Layout";
+import { colors } from "@/styled";
+import { Dimensions, TouchableOpacity } from "react-native";
 
+const { width } = Dimensions.get('window');
 export const InputProfile = styled(HStackBetween)`
     border-bottom-width: 2px;
     border-color:${colors.gray1};
@@ -16,3 +17,6 @@ export const ButtonProfile = styled(TouchableOpacity)`
     background-color:${colors.primary};
     margin-top:20px;
 `;
+export const InfoView = styled(VStackStart)`
+    flex:1;
+`

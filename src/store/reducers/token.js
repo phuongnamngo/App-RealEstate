@@ -1,4 +1,4 @@
-import { REMOVE_TOKEN, UPDATE_TOKEN } from "@/actions/Auth/type";
+import {REMOVE_TOKEN, UPDATE_TOKEN} from '@/actions/Auth/type';
 
 const initialState = {accessToken: null, refreshToken: null, expire: 0};
 

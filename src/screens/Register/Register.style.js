@@ -15,7 +15,7 @@ export const ButtonLogin = styled(TouchableOpacity)`
     border-radius:12px;
     align-items:center;
     padding:15px;
-    margin-top:25px;
+    margin-top:30px;
 `
 export const ForgotPass = styled(TouchableOpacity)`
     margin-top:20px;

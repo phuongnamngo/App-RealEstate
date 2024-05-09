@@ -1,4 +1,6 @@
-import Auth from "./Auth"
+import Auth from "./Auth";
+import General from "./General";
 export default {
-    Auth
+    Auth,
+    General
 }

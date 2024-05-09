@@ -7,6 +7,7 @@ import signOut from './signOut';
 import refreshToken from './refreshToken';
 import logoutApi from './logoutApi';
 import getProfile from './getProfile';
+import updateProfile from './updateProfile';
 //endAppendAction
 
 const listReducer = [
@@ -16,7 +17,8 @@ const listReducer = [
   signOut,
   refreshToken,
   logoutApi,
-  getProfile
+  getProfile,
+  updateProfile
   //endAppendToReducer
 ];
 

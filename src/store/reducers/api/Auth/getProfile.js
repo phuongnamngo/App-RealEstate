@@ -13,7 +13,9 @@ export default {
         'Auth/getProfile',
         async (args, { dispatch }) => {
             const response = await wrapApi(getProfileService, args);
-            dispatch(loadProfile(response));
+            if (response.statuscode === 200) {
+                dispatch(loadProfile(response.data));
+            }
             return response;
         }
     ),
